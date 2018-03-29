@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Products.css'
+import { formatCurrency } from '../../helpers/currencyHelper';
 
 const products = props => {
   return (
@@ -10,7 +11,7 @@ const products = props => {
           <img src={props.product.Image} />
           <div>
             <span>{props.product.Description}</span>
-            <span className="badge">{props.product.Price}</span>
+            <span className="badge">{formatCurrency(props.product.Price)}</span>
           </div>
           <button onClick={(id, name, price) => props.addToCart(props.product.id, props.product.Name, props.product.Price)} >Add to cart</button>
         </div>

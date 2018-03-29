@@ -3,7 +3,7 @@
 }
 
 .main-container {
-  margin-top: 65px;
+  margin-top: 75px;
   box-sizing: border-box;
   /* display: flex;
   flex-direction: column;
@@ -41,4 +41,18 @@
 .minus:hover {
   background-color: rgb(161, 5, 5);
   color: whitesmoke;
+}
+
+/* .continue {
+  margin-right: 5px;
+} */
+
+.clear-cart {
+  float: right;
+  clear: both;
+}
+
+.checkout {
+  margin-left: 20%;
+  margin-right: auto;
 }

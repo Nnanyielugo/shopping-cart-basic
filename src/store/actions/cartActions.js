@@ -27,3 +27,9 @@ export const removeItem = id => {
     id
   }
 }
+
+export const clearCart = () => {
+  return {
+    type: types.CLEAR_CART
+  }
+}

@@ -1,5 +1,5 @@
 import * as types from '../actions/ActionTypes';
-import { updatePrices, increaseQuantity, reduceQuantity, removeItem} from '../helpers/cartHelpers';
+import { updatePrices, increaseQuantity, reduceQuantity, removeItem} from '../../helpers/cartHelpers';
 
 
 const initialState = {
@@ -34,6 +34,12 @@ const reducer = (state=initialState, action) => {
         ...state,
         cart: removeItem(state.cart, action.id),
         total: updatePrices(state.cart)
+      }
+    case types.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
+        total: 0
       }
     default:
       return state;

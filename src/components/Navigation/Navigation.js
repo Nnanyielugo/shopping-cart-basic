@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './Navigation.css'
+import cart from '../../assets/images/cart/cart2.png';
+
 const navigation = props => {
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
@@ -18,7 +21,7 @@ const navigation = props => {
           <ul className="nav navbar-nav navbar-right">
           {/* <li className="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li> */}
-          <li ><Link to="/cart">Cart</Link></li>
+          <li ><Link to="/cart"><img className="cart-image" src={cart}/><span className="badge badge-default">{props.cart.length ? props.cart.length : ''}</span></Link></li>
           </ul>
         </div>
       </div>

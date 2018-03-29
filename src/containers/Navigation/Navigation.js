@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Nav from '../../components/Navigation/Navigation';
 
 class Navigation extends Component {
   render() {
     return (
-      <Nav />
+      <Nav cart={this.props.cart} />
     )
   }
 }
 
-export default Navigation;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart.cart
+  }
+}
+
+export default connect(mapStateToProps)(Navigation);
