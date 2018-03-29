@@ -1,14 +1,6 @@
 import * as types from '../actions/ActionTypes';
+import { updatePrices, increaseQuantity, reduceQuantity, removeItem} from '../helpers/cartHelpers';
 
-function updatePrices(products){
-  let prices = [], total = 0;
-
-  for(let product in products){
-    prices.push(products[product].price);
-    total = prices.reduce((a, b) => a+b)
-  }
-  return total;
-}
 
 const initialState = {
   cart: [],
@@ -24,6 +16,24 @@ const reducer = (state=initialState, action) => {
         ...state,
         cart: state.cart.concat(action.product),
         total: updatePrices(state.cart.concat(action.product))
+      }
+    case types.INCREASE_QUANTITY:
+      return {
+        ...state,
+        cart: increaseQuantity(state.cart, action.id),
+        total: updatePrices(state.cart)
+      }
+    case types.DECREASE_QUANTITY:
+      return {
+        ...state,
+        cart: reduceQuantity(state.cart, action.id),
+        total: updatePrices(state.cart)
+      }
+    case types.REMOVE_ITEM:
+      return {
+        ...state,
+        cart: removeItem(state.cart, action.id),
+        total: updatePrices(state.cart)
       }
     default:
       return state;

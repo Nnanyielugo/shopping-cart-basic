@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import CartItem from '../../components/Cart/Cart'
+import * as actions from '../../store/actions/index';
 
 class Cart extends Component {
+  decreaseQuantity = (id, quantity) => {
+    if(quantity <= 0){
+      return
+    } 
+    this.props.onDecreaseQuantity(id);
+  }
+
   render() {
     let cart = ''
     let noCart  = <h4 style={{color: "red"}}>You have no items in your cart!</h4>
-    if(this.props.cart != '') {
+    if(this.props.cart.length) {
       noCart = ''
     }
     if(this.props.cart){
@@ -14,21 +23,21 @@ class Cart extends Component {
         console.log("Cart Item: ", cartItem)
         return (<tbody key={cartItem.id}>
                   <tr>
-                    <td><input style={{width: "28px"}} /></td>
+                    <td><input readOnly value={cartItem.quantity} style={{width: "28px", textAlign: 'center'}} /><span onClick={(id, quantity) => this.decreaseQuantity(cartItem.id, cartItem.quantity)} className="glyphicon glyphicon-minus minus"></span><span onClick={(id) => this.props.onIncreaseQuantity(cartItem.id)} className="glyphicon glyphicon-plus plus"></span></td>
                     <td>{cartItem.name}</td>
                     <td>{cartItem.price}</td>
-                    <td><a href="#" class="btn btn-mini btn-danger" data-bind="click:$parent.removeFromCart">
-                              <i class="icon-remove icon-white"></i>Remove </a></td>
+                    <td><a onClick={(id) => this.props.onRemoveItem(cartItem.id)} href="#" className="btn btn-mini btn-danger">
+                              <i className="icon-remove icon-white"></i>Remove </a></td>
                   </tr>
                 </tbody>)
       })
     } 
     return(
       <div className="main-container cart-table">
-        <table className="table table-bordered">
+        <table className="table table-bordered table-hover">
           <thead>
             <tr>
-              <th>
+              <th style={{width: "95px"}}>
                 Qty
               </th>
               <th>
@@ -62,7 +71,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    onIncreaseQuantity: (id) => dispatch(actions.increaseQuantity(id)),
+    onDecreaseQuantity: (id) => dispatch(actions.decreaseQuantity(id)),
+    onRemoveItem: (id) => dispatch(actions.removeItem(id))
   }
 }
 

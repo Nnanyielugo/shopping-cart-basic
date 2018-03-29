@@ -1,2 +1,5 @@
 export { loadProducts } from './productsActions';
-export { addToCart } from './cartActions';
+export { addToCart,
+          increaseQuantity,
+          decreaseQuantity,
+          removeItem } from './cartActions';

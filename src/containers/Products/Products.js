@@ -9,14 +9,28 @@ class Products extends Component {
     this.props.onLoadProducts()
   }
 
-  addToCart = (id, name, price) => {
-    const product = {};
-    product.id = id;
-    product.name = name;
-    product.price = price;
-    console.log(product)
+  checkProduct = (productId) => {
+    let cart = this.props.cart;
+    return cart.some(item => item.id === productId);
+  }
 
-    this.props.onAddToCart(product)
+  addToCart = (id, name, price) => {
+    let cartItem = this.props.cart;
+    let quantity = 1
+    if(this.checkProduct(id)) {
+      console.log('id matches')
+      this.props.onIncreaseQuantity(id)
+    } else {
+      const product = {};
+      product.id = id;
+      product.name = name;
+      product.price = price;
+      product.quantity = quantity;
+      console.log(product)
+
+      this.props.onAddToCart(product)
+    }
+    
   }
   
   render() {
@@ -37,14 +51,16 @@ class Products extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products.products
+    products: state.products.products,
+    cart: state.cart.cart
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onLoadProducts: () => dispatch(actions.loadProducts()),
-    onAddToCart: (product) => dispatch(actions.addToCart(product))
+    onAddToCart: (product) => dispatch(actions.addToCart(product)),
+    onIncreaseQuantity: (id) => dispatch(actions.increaseQuantity(id))
   }
 }
 

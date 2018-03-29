@@ -13,4 +13,32 @@
 .cart-table {
   width: 700px;
   /* text-align: center */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plus {
+  color: rgb(2, 88, 2);
+  border: 1px solid grey;
+  padding: 2px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.plus:hover {
+  background-color: rgb(2, 88, 2);
+  color: whitesmoke;
+}
+
+.minus {
+  color: rgb(161, 5, 5);
+  border: 1px solid grey;
+  padding: 2px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.minus:hover {
+  background-color: rgb(161, 5, 5);
+  color: whitesmoke;
 }

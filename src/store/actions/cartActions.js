@@ -6,3 +6,24 @@ export const addToCart = (product) => {
     product
   }
 }
+
+export const increaseQuantity = id => {
+  return {
+    type: types.INCREASE_QUANTITY,
+    id
+  }
+}
+
+export const decreaseQuantity = id => {
+  return {
+    type: types.DECREASE_QUANTITY,
+    id
+  }
+}
+
+export const removeItem = id => {
+  return {
+    type:types.REMOVE_ITEM,
+    id
+  }
+}
