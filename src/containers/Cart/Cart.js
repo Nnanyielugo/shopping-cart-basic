@@ -17,6 +17,10 @@ class Cart extends Component {
     this.props.history.goBack()
   }
 
+  checkout = () => {
+    this.props.history.push('/checkout');
+  }
+
   render() {
     let cart = ''
     let noCart  = <h4 style={{color: "red"}}>You have no items in your cart!</h4>
@@ -73,7 +77,7 @@ class Cart extends Component {
        {noCart}
 
        <button onClick={this.continueShopping} className="btn btn-primary btn-lg continue">Continue Shopping</button>
-       <button className="btn btn-success btn-lg checkout">Checkout</button>
+       <button onClick={this.checkout} className="btn btn-success btn-lg checkout">Checkout</button>
        <button onClick={() => this.props.onCLearCart()} className="btn btn-warning btn-lg clear-cart">Clear Cart</button>
       </div>
     )

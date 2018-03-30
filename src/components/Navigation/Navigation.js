@@ -15,7 +15,7 @@ const navigation = props => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <Link to="/" className="navbar-brand">Shopify</Link>
+          <Link to="/" className="navbar-brand" style={{fontSize: 28}}>Shopify</Link>
         </div>
         <div id="navbar" className="collapse navbar-collapse">
           <ul className="nav navbar-nav navbar-right">
