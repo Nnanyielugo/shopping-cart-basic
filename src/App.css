@@ -53,6 +53,18 @@
 }
 
 .checkout {
-  margin-left: 20%;
+  margin-left: 15%;
   margin-right: auto;
+}
+
+/* .carousel-container Carousel {
+  height: 400px;
+  max-height: 400px;
+} */
+
+
+Fade {
+  height: 400px;
+  max-height: 400px;
+  size: 400px;
 }

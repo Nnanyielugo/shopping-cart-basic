@@ -3,15 +3,26 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import ProductList from '../../components/Products/Products';
+import Carousel from '../../components/Carousel/Carousel';
 
 class Products extends Component {
+  state = {
+    term: '',
+  }
+
   componentDidMount() {
-    this.props.onLoadProducts()
+    this.props.onLoadProducts();
   }
 
   checkProduct = (productId) => {
     let cart = this.props.cart;
     return cart.some(item => item.id === productId);
+  }
+
+  handleSearch = (event) => {
+    this.setState({
+      term: event.target.value
+    })
   }
 
   addToCart = (id, name, price) => {
@@ -35,8 +46,15 @@ class Products extends Component {
   
   render() {
     let products  = null;
+    let term = this.state.term;
+    let x;
+    function searchingFor(term){
+      return function(x){
+        return x.Name.toLowerCase().includes(term.toLowerCase()) || !term;
+      }
+    }
     if(this.props.products) {
-      products = this.props.products.map(product => {
+      products = this.props.products.filter(searchingFor(term)).map(product => {
         return <ProductList 
                     key={product.id} 
                     product={product}
@@ -44,7 +62,13 @@ class Products extends Component {
       })
     }
     return (
-      <div className="row main-container">{products}</div>
+      <div className="row main-container">
+      <input onChange={this.handleSearch} />
+        <div className="carousel-container">
+          <Carousel />
+        </div>
+        {products}
+      </div>
     )
   }
 }

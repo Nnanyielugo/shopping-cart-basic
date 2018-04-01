@@ -12,13 +12,19 @@ class Checkout extends Component {
     this.props.history.push('/')
   }
 
+  goBack = (e) => {
+    e.preventDefault();
+    this.props.history.goBack()
+  }
+
   render(){
     return (
       <div className="main-container">
         <CheckoutComponent
             cart={this.props.cart}
             total={this.props.total}
-            clearCart={this.clearCart} />
+            clearCart={this.clearCart}
+            goBack={this.goBack} />
       </div>
     )
   }

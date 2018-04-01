@@ -77,7 +77,7 @@ class Cart extends Component {
        {noCart}
 
        <button onClick={this.continueShopping} className="btn btn-primary btn-lg continue">Continue Shopping</button>
-       <button onClick={this.checkout} className="btn btn-success btn-lg checkout">Checkout</button>
+       <button onClick={this.checkout} className="btn btn-success btn-lg checkout">Proceed to Checkout</button>
        <button onClick={() => this.props.onCLearCart()} className="btn btn-warning btn-lg clear-cart">Clear Cart</button>
       </div>
     )

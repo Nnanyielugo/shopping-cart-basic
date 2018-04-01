@@ -77,7 +77,8 @@ const checkout = props => {
             <label>
               <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing
             </label>
-            <input onClick={props.clearCart} type="submit" value="Continue to checkout" className="custom-btn" />
+            <input onClick={props.clearCart} type="submit" value="Checkout" className="custom-btn" />
+            <input onClick={props.goBack} type="submit" value="Or go back" className="custom-btn-cancel" />
           
           </form>
         </div>
