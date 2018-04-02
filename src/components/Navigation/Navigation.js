@@ -5,6 +5,7 @@ import './Navigation.css'
 import cart from '../../assets/images/cart/cart2.png';
 
 const navigation = props => {
+  
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -16,8 +17,10 @@ const navigation = props => {
             <span className="icon-bar"></span>
           </button>
           <Link to="/" className="navbar-brand" style={{fontSize: 28}}>Shopify</Link>
+          
         </div>
         <div id="navbar" className="collapse navbar-collapse">
+        <input className="nav-input" placeholder="Search..." onChange={props.search} /> <span className=" search-icon glyphicon glyphicon-search"/>
           <ul className="nav navbar-nav navbar-right">
           {/* <li className="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li> */}

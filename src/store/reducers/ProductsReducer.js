@@ -2,7 +2,8 @@ import * as types from '../actions/ActionTypes';
 import Products from '../../assets/api/ProductsList';
 
 const initialState = {
-  products: null
+  products: null,
+  term: ''
 }
 
 const reducer = (state=initialState, action) => {
@@ -11,6 +12,11 @@ const reducer = (state=initialState, action) => {
       return {
         ...state,
         products: Products
+      }
+    case types.HANDLE_SEARCH:
+      return {
+        ...state,
+        term: action.term
       }
     default:
       return state

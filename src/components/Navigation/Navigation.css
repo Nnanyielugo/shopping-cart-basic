@@ -4,3 +4,14 @@
   mix-blend-mode: multiply;
   margin-left: 4px;
 }
+
+.nav-input {
+  margin-left: 80px;
+  margin-top: 10px;
+  padding: 6px 0 6px 7px;
+  border-radius: 5px;
+}
+
+.search-icon {
+  margin-left: -25px;
+}

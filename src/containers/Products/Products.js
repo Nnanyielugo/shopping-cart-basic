@@ -6,9 +6,6 @@ import ProductList from '../../components/Products/Products';
 import Carousel from '../../components/Carousel/Carousel';
 
 class Products extends Component {
-  state = {
-    term: '',
-  }
 
   componentDidMount() {
     this.props.onLoadProducts();
@@ -19,11 +16,7 @@ class Products extends Component {
     return cart.some(item => item.id === productId);
   }
 
-  handleSearch = (event) => {
-    this.setState({
-      term: event.target.value
-    })
-  }
+  
 
   addToCart = (id, name, price) => {
     let cartItem = this.props.cart;
@@ -46,8 +39,8 @@ class Products extends Component {
   
   render() {
     let products  = null;
-    let term = this.state.term;
-    let x;
+    let term = this.props.term;
+   
     function searchingFor(term){
       return function(x){
         return x.Name.toLowerCase().includes(term.toLowerCase()) || !term;
@@ -61,13 +54,14 @@ class Products extends Component {
                     addToCart={this.addToCart} />
       })
     }
+
+     
     return (
       <div className="row main-container">
-      <input onChange={this.handleSearch} />
         <div className="carousel-container">
           <Carousel />
         </div>
-        {products}
+        {products && products.length <= 0 && term ? <h2 style={{color: 'red', marginTop: 40}}>Your search did not match any items</h2> :  products}
       </div>
     )
   }
@@ -76,6 +70,7 @@ class Products extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products.products,
+    term: state.products.term,
     cart: state.cart.cart
   }
 }

@@ -6,3 +6,10 @@ export const loadProducts = () => {
     type: types.LOAD_PRODUCTS
   }
 }
+
+export const handleSearch = term => {
+  return {
+    type: types.HANDLE_SEARCH,
+    term
+  }
+}
