@@ -9,6 +9,7 @@ import Layout from './containers/hoc/Layout';
 import Products from './containers/Products/Products';
 import Cart from './containers/Cart/Cart';
 import Checkout from './containers/Checkout/Checkout';
+import Product from './containers/Product/Product';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
       <Layout>
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/products/:id" component={Product} />
         <Route path="/" exact component={Products} />
       </Layout>
     );
